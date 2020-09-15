@@ -1,0 +1,23 @@
+server:
+  port: 80
+
+eureka: 
+  client: 
+    # false表示不向注册中心注册自己
+    register-with-eureka: true
+    # false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    fetch-registry: true
+    service-url: 
+    # 设置与eureka server交互的地址查询服务和注册服务都需要依赖这个地址
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+#设置feign客户端超市时间（OpenFeign默认支持ribbon）
+ribbon: 
+  ReadTimeout: 5000
+#指的是简历连接后从服务器读取到的可用资源所用时间
+  ConnectTimeout: 5000 
+  
+logging:
+  level:
+    # feign日志以什么级别监控哪个接口
+    com.atguigu.springcloud.service.PaymentFeignService: debug
+    
